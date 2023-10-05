@@ -7,8 +7,9 @@ The concepts are based on the original blog: https://learn.microsoft.com/en-gb/a
 
 This version of the scripts provides the following features aimed at creating custom windows event forwarding logs.
 - create manifest and dll needed for the custom log channels and providers: this is done with the scripts gen_manifest.ps1 and build_man2dll.ps1
-- install the manifest and dll in the system32 directory and registering these files: this is done with the script install_channels.ps1
-- uninstall the manifest and dll: this is done with the script uninstall_channels.ps1
+- install the manifest and dll in the system32 directory and registering these files: this is done with the script install_channels.ps1 (this can be used also to update an existing configuration)
+- configure channels with its dedicated directory and max size: this is done with the configure_channels.ps1 script
+- uninstall the manifest and dll: this is done with the script uninstall_channels.ps1 (used only in case it is needed to completely remove the configuration)
 
 In order for the build_man2dll.ps1 script to work, it is needed to install the Windows 8.1 SDK that is available from this archive:
 https://developer.microsoft.com/en-us/windows/downloads/sdk-archive/
