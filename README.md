@@ -19,6 +19,8 @@ In order to configure the channels and providers that are built into the manifes
 Then run the two scripts gen_manifest.ps1 and build_man2dll.ps1 to create the manifest and dll.
 Finally, move the entire repo on the target computer if it is a different unit and run the final script, install_channels.ps1, with admin priviledged
 
+If needed, run the uninstall_channels.ps1 script to remove the channels and files from the target machine.
+
 
 # Licence
 

@@ -1,7 +1,5 @@
 ﻿###
-# Copyright: Elastic NV (https://www.elastic.co/) 2021
 # Licence: AGPL 3.0
-# Author: Thorben Jändling
 # 
 
 cd $PSScriptRoot
@@ -13,7 +11,6 @@ cd $PSScriptRoot
 # - A unique GUID; Use [guid]::NewGuid() to get new GUIDs, if you want to add new Providers
 # - The (channel) Logs Directory; Recommend using dedicated disks/storage e.g. D:\Logs
 # - The max Log Size before rollover
-# - The AD Groups that map hosts to them (Include/Exclude)
 # NOTE: The AD Groups listed here will be created if missing!
 $ProviderList = @{
 
@@ -51,33 +48,15 @@ $ProviderList = @{
 }
 
 
-# List of Channels (log files) and their Forwarding event selector Filters
-# The Filter used is set via $FFProfile (above) in the form "FF${FFProfile}"
+# List of Channels (log files). a max of 8 channels per provider is supported
 $ChannelList = @{
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Application
     "Application" = @{};
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc
     "Misc" = @{};
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Script (PowerShell)
-    "Script" = @{}
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Security
+    "Script" = @{};
     "Security" = @{};
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Service
     "Service" = @{};
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sysmon
     "Sysmon" = @{};
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ System
     "System" = @{};
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ End
-
 } # $ChannelList
 
 # Extra processors to include in the generated winlogbeat.yml
@@ -92,7 +71,6 @@ $wlbEventLogsExtras = @"
 # Extra options to add to each Event Log input in the generated winlogbeat.yml
 $wlbEventLogOptions = @"
 "@
-
 
 
 # Base name for our WEC Forward Channels files
